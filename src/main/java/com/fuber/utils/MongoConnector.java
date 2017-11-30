@@ -1,4 +1,4 @@
-package com.fuber.dao;
+package com.fuber.utils;
 
 import com.fuber.constants.FuberConstants;
 import com.mongodb.DB;
@@ -12,7 +12,7 @@ import java.util.Map;
 
 
 /**
- *
+ * Mongo Connection class
  * Created by Jaskaranjit on 11/30/17.
  */
 public class MongoConnector
@@ -23,6 +23,9 @@ public class MongoConnector
     private static final Map<String, DB> DB_MAP = new HashMap<>();
 
 
+    /**
+     * private constructor
+     */
     private MongoConnector()
     {
     }
@@ -30,7 +33,6 @@ public class MongoConnector
 
     /**
      * Returns a {@link MongoClient} for a mongo URI
-     *
      * @param mongoConnection MongoConnection String
      * @return Mongo Client
      */
@@ -49,8 +51,7 @@ public class MongoConnector
 
 
     /**
-     * Returns the {@link MongoClient} for the URI picked from the config
-     *
+     * Returns the {@link MongoClient} for the URI picked from the config     *
      * @return Mongo Client
      */
     public static MongoClient getClient()
@@ -60,8 +61,7 @@ public class MongoConnector
 
 
     /**
-     * Returns the {@link DB} for the default {@link MongoClient}
-     *
+     * Returns the {@link DB} for the default {@link MongoClient}     *
      * @param dbName Database name to fetch
      * @return DB Object
      */

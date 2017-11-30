@@ -3,6 +3,7 @@ package com.fuber.dao;
 import com.fuber.constants.FuberConstants;
 import com.fuber.entities.Cab;
 import com.fuber.entities.Location;
+import com.fuber.utils.MongoConnector;
 import com.fuber.utils.Utils;
 import com.mongodb.*;
 import org.slf4j.Logger;

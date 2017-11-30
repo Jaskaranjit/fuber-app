@@ -59,7 +59,7 @@ public class Utils
 
 
     /**
-     * Calculates distance between two locations
+     * Calculates distance between two locations. The distance is calculated with Pythagoras Theorem. a*a + b*b = c*c
      * @param locationOne location one
      * @param locationTwo location two
      * @return distance between 2 points
@@ -79,7 +79,7 @@ public class Utils
      * @param distance distance to calculate time for
      * @return time taken in minutes to cover the distance
      */
-    public static double calulateTime( double distance )
+    public static double calculateTime( double distance )
     {
         double timeInHour = distance / 50;
         return timeInHour * 60;

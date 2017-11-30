@@ -29,12 +29,14 @@ public class Cab
 
     /**
      * Initialise the {@link Cab}
+     * @param cabId cab id
      * @param cabLocation cab location
      * @param color color of the cab
      * @param isAvailable cab availability
      */
-    public Cab( Location cabLocation, String color, boolean isAvailable )
+    public Cab( String cabId, Location cabLocation, String color, boolean isAvailable )
     {
+        this.cabId = cabId;
         this.cabLocation = cabLocation;
         this.color = color;
         this.isAvailable = isAvailable;

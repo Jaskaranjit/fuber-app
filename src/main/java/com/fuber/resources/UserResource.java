@@ -20,7 +20,7 @@ import javax.ws.rs.core.Response;
  * Resource class for serving user requirements like booking a cab or completing a trip
  * Created by Jaskaranjit on 11/30/17.
  */
-@Path ("/v1/user") @Api (value = "Cab user services", description = "Web Services to serve customer requirements") public class UserResource
+@Path ("/v1/user") @Api (value = "Cab user services", description = "Web Services to serve customer bookings") public class UserResource
 {
     private static final Logger LOG = LoggerFactory.getLogger( UserResource.class );
 

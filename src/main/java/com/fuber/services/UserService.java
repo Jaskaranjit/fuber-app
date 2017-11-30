@@ -86,6 +86,8 @@ public class UserService
         user.setTripStatus( TripStatus.ON_GOING );
         userDAO.saveUser( user );
 
+        LOG.info( "{} cab assigned to {} user", cab, user );
+
         // update the status of cab to unavailable
         cabsDAO.updateCabAvailability( cab.getCabId(), false );
 
@@ -106,12 +108,15 @@ public class UserService
 
         // calculate distance
         double distance = Utils.calculateDistance( user.getPickUpLocation(), dropLocation );
+        LOG.info( "Distance between {} pickup and {} drop point is {}", user.getPickUpLocation(), dropLocation, distance );
 
         // calculate time
-        double time = Utils.calulateTime( distance );
+        double time = Utils.calculateTime( distance );
+        LOG.info( "Time taken to cover {} distance is {}", distance, time );
 
         // calculate fare
         double fare = Utils.calculateCost( distance, time, user.getCabColor() );
+        LOG.info( "Total fare for {} user is {}", userId, fare );
 
         // update the user object with trip status and fare details
         user.setTripStatus( TripStatus.COMPLETE );
@@ -120,6 +125,8 @@ public class UserService
         user.setTravelTime( time );
         user.setTravelDistance( distance );
         userDAO.saveUser( user );
+
+        LOG.info( "Trip completed successfully for {} user", user );
 
         // update the cab location and status
         cabsDAO.updateCabAvailability( user.getCabId(), true );

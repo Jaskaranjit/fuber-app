@@ -9,6 +9,7 @@ import org.junit.Test;
  */
 public class CabsDAOTest
 {
+
     /**
      * Tests saving a cab
      * @throws Exception
@@ -24,6 +25,12 @@ public class CabsDAOTest
      * @throws Exception
      */
     @Test public void getCabs() throws Exception
+    {
+
+    }
+
+
+    @Test public void getAllAvailableCabsForColor() throws Exception
     {
 
     }

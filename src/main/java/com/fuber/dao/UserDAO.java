@@ -3,6 +3,7 @@ package com.fuber.dao;
 import com.fuber.constants.FuberConstants;
 import com.fuber.entities.User;
 import com.fuber.exception.FuberException;
+import com.fuber.utils.MongoConnector;
 import com.fuber.utils.Utils;
 import com.mongodb.*;
 import org.slf4j.Logger;
@@ -111,7 +112,7 @@ public class UserDAO
             }
         }
 
-        LOG.info( "Size of runHistoryList : {}", users.size() );
+        LOG.info( "Size of user history list : {}", users.size() );
         return users;
     }
 

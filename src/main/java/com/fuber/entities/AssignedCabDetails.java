@@ -11,6 +11,12 @@ public class AssignedCabDetails
     private final Cab cabDetails;
 
 
+    /**
+     * Initialize {@link AssignedCabDetails}
+     * @param message booking message
+     * @param userId userId
+     * @param cabDetails cab details assigned to user
+     */
     public AssignedCabDetails( String message, String userId, Cab cabDetails )
     {
         this.message = message;
@@ -19,6 +25,10 @@ public class AssignedCabDetails
     }
 
 
+    /**
+     * Initiatize {@link AssignedCabDetails} with booking message
+     * @param message message
+     */
     public AssignedCabDetails( String message )
     {
         this( message, null, null );

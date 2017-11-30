@@ -13,15 +13,6 @@ public class FuberException extends Exception
 
 
     /**
-     * Instantiates a new fuber exception.
-     */
-    public FuberException()
-    {
-        super();
-    }
-
-
-    /**
      * Initialises Exception with exception message and throwable cause
      * @param message exception message
      * @param th exception message
@@ -29,19 +20,6 @@ public class FuberException extends Exception
     public FuberException( String message, Throwable th )
     {
         super( message, th );
-    }
-
-
-    /**
-     * Initialises Exception with all parameters
-     * @param message exception message
-     * @param cause throwable cause
-     * @param enableSuppression boolean for enabling suppression
-     * @param writableStackTrace boolean for printing stack trace
-     */
-    public FuberException( String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace )
-    {
-        super( message, cause, enableSuppression, writableStackTrace );
     }
 
 
@@ -54,13 +32,4 @@ public class FuberException extends Exception
         super( message );
     }
 
-
-    /**
-     * Initialises Exception with throwable cause
-     * @param cause throwable cause
-     */
-    public FuberException( Throwable cause )
-    {
-        super( cause );
-    }
 }
