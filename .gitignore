@@ -1,0 +1,11 @@
+.idea/
+*.iml
+target/
+.project
+.settings/
+dependency-reduced-pom.xml
+.classpath
+META-INF/
+*.pyc
+.metadata
+
