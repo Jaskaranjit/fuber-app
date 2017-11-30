@@ -12,6 +12,8 @@ public class FuberConstants
     public static final String DOCS_URL = "/docs/";
     public static final int SERVICE_PORT = 8507;
     public static final String FUBER_DB = "fuberDB";
+    public static final String CABS_COLLECTION = "cabs";
+    public static final String USERS_COLLECTION = "users";
 
 
     /**

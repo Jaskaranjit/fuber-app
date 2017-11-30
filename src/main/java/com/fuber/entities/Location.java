@@ -7,8 +7,17 @@ package com.fuber.entities;
 public class Location
 {
 
-    private final double latitude;
-    private final double longitude;
+    private double latitude;
+    private double longitude;
+
+
+    /**
+     * default constructor
+     */
+    public Location()
+    {
+        // do nothing
+    }
 
 
     /**
@@ -32,6 +41,18 @@ public class Location
     public double getLongitude()
     {
         return longitude;
+    }
+
+
+    public void setLatitude( double latitude )
+    {
+        this.latitude = latitude;
+    }
+
+
+    public void setLongitude( double longitude )
+    {
+        this.longitude = longitude;
     }
 
 

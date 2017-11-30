@@ -29,7 +29,7 @@ public class CabsDAO
     private CabsDAO( String dbName )
     {
         this.fuberDB = dbName;
-        this.collection = MongoConnector.getDB( this.fuberDB ).getCollection( FuberConstants.FUBER_DB );
+        this.collection = MongoConnector.getDB( this.fuberDB ).getCollection( FuberConstants.CABS_COLLECTION );
     }
 
 
@@ -79,7 +79,7 @@ public class CabsDAO
 
     /**
      * Returns all cabs
-     * @return list of archival run history
+     * @return list of all cabs
      */
     public List<Cab> getCabs()
     {
@@ -92,6 +92,31 @@ public class CabsDAO
             }
         }
         LOG.info( "Size of cabsList : {}", cabs.size() );
+        return cabs;
+    }
+
+
+    /**
+     * Get List of all available cabs. If color is provided, filter with color
+     * @param color color of the cab
+     * @return list of available cabs satisfying color criteria
+     */
+    public List<Cab> getAllAvailableCabsForColor( String color )
+    {
+        LOG.info( "Getting all available cabs of {} color", color );
+        List<Cab> cabs = new ArrayList<>();
+
+        BasicDBObject findQuery = new BasicDBObject( "isAvailable", true );
+        if ( !Utils.isNullOrEmpty( color ) ) {
+            findQuery.append( "color", color );
+        }
+
+        try ( Cursor cursor = this.collection.find( findQuery ) ) {
+            while ( cursor.hasNext() ) {
+                cabs.add( Cab.fromDBObject( cursor.next() ) );
+            }
+        }
+        LOG.info( "Size of available cabsList : {}", cabs.size() );
         return cabs;
     }
 
@@ -117,7 +142,8 @@ public class CabsDAO
     public void updateCabLocation( String cabId, Location location )
     {
         LOG.info( "Updating cab location of {} to {}", cabId, location );
+        Map locationMap = Utils.GSON.fromJson( Utils.GSON.toJson( location ), HashMap.class );
         this.collection.update( new BasicDBObject( "_id", cabId ),
-            new BasicDBObject( "$set", new BasicDBObject( "cabLocation", location ) ) );
+            new BasicDBObject( "$set", new BasicDBObject( "cabLocation", locationMap ) ) );
     }
 }

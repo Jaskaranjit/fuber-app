@@ -19,15 +19,22 @@ public class Cab
 
 
     /**
+     * default constructor
+     */
+    public Cab()
+    {
+        // do nothing
+    }
+
+
+    /**
      * Initialise the {@link Cab}
-     * @param cabId cabId
      * @param cabLocation cab location
      * @param color color of the cab
      * @param isAvailable cab availability
      */
-    public Cab( String cabId, Location cabLocation, String color, boolean isAvailable )
+    public Cab( Location cabLocation, String color, boolean isAvailable )
     {
-        this.cabId = cabId;
         this.cabLocation = cabLocation;
         this.color = color;
         this.isAvailable = isAvailable;

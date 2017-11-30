@@ -1,4 +1,4 @@
-package com.fuber.utils.com.fuber.app;
+package com.fuber.app;
 
 import com.caffinc.jetter.Api;
 import com.fuber.constants.FuberConstants;

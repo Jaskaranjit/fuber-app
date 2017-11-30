@@ -42,7 +42,7 @@ import javax.ws.rs.core.Response;
      * Handles request to add a new cab
      * @return list of cabs
      */
-    @POST @Path ("/") @ApiOperation (value = "Add a new cab", notes = "Saves a new Cab", responseContainer = "List", response = Cab.class) @Produces (MediaType.APPLICATION_JSON) public Response saveCab(
+    @POST @Path ("/") @ApiOperation (value = "Add a new cab", notes = "Saves a new Cab") @Produces (MediaType.APPLICATION_JSON) public Response saveCab(
         @ApiParam (value = "Cab to be saved", required = true) Cab cab )
     {
         LOG.info( "Got request to save a new cab {}", cab );
