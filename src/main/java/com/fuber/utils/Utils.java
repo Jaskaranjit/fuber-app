@@ -4,9 +4,7 @@ import com.fuber.entities.Cab;
 import com.fuber.entities.Location;
 import com.google.gson.Gson;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 
 /**
@@ -35,6 +33,29 @@ public class Utils
     public static boolean isNullOrEmpty( String string )
     {
         return string == null || string.isEmpty();
+    }
+
+
+    /**
+     * Converts a Object to a Map
+     * @param object the objecet
+     * @return the map
+     */
+    @SuppressWarnings ("unchecked") public static Map<String, Object> toMap( Object object )
+    {
+        return toObject( object, HashMap.class );
+    }
+
+
+    /**
+     * Converts an Object to the specified class
+     * @param object the ibject
+     * @param clazz the class
+     * @return the converted object
+     */
+    public static <T> T toObject( Object object, Class<T> clazz )
+    {
+        return GSON.fromJson( GSON.toJson( object ), clazz );
     }
 
 

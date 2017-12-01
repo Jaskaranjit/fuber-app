@@ -64,8 +64,13 @@ public class CabsDAO
     public String saveCab( Cab cab )
     {
         LOG.info( "Saving cab {} in db", cab );
-        String id = UUID.randomUUID().toString();
-        cab.setCabId( id );
+        String id;
+        if ( cab.getCabId() != null ) {
+            id = cab.getCabId();
+        } else {
+            id = UUID.randomUUID().toString();
+            cab.setCabId( id );
+        }
         Map map = Utils.GSON.fromJson( Utils.GSON.toJson( cab ), HashMap.class );
         map.put( "_id", id );
         DBObject obj = new BasicDBObject( map );
@@ -80,14 +85,18 @@ public class CabsDAO
 
     /**
      * Returns all cabs
+     * availabilityStatus return all cabs if status is set to false else return available cabs
      * @return list of all cabs
      */
-    public List<Cab> getCabs()
+    public List<Cab> getCabs( boolean availabilityStatus )
     {
         LOG.info( "Getting all cabs" );
         List<Cab> cabs = new ArrayList<>();
-
-        try ( Cursor cursor = this.collection.find() ) {
+        BasicDBObject findQuery = new BasicDBObject();
+        if ( availabilityStatus ) {
+            findQuery.append( "isAvailable", availabilityStatus );
+        }
+        try ( Cursor cursor = this.collection.find( findQuery ) ) {
             while ( cursor.hasNext() ) {
                 cabs.add( Cab.fromDBObject( cursor.next() ) );
             }

@@ -1,6 +1,7 @@
 package com.fuber.dao;
 
 import com.fuber.constants.FuberConstants;
+import com.fuber.entities.TripStatus;
 import com.fuber.entities.User;
 import com.fuber.exception.FuberException;
 import com.fuber.utils.MongoConnector;
@@ -60,7 +61,7 @@ public class UserDAO
 
 
     /**
-     * Get user by user Id
+     * Get user by user Id for on going trip
      * @param userId userId
      * @return user corresponding to userId
      * @throws FuberException
@@ -68,7 +69,8 @@ public class UserDAO
     public User getUserById( String userId ) throws FuberException
     {
         LOG.info( "Fetching user for {} userId", userId );
-        DBObject user = this.collection.findOne( new BasicDBObject( "_id", userId ) );
+        DBObject user = this.collection
+            .findOne( new BasicDBObject( "userId", userId ).append( "tripStatus", TripStatus.ON_GOING.name() ) );
 
         if ( user == null ) {
             throw new FuberException( "Exception while getting the user" );

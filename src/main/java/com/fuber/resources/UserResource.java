@@ -40,16 +40,20 @@ import javax.ws.rs.core.Response;
 
     /**
      * Handles request to book a cab
-     * @param cabColor color of the cab
+     * @param getPinkCab color of the cab
      * @param pickUpLocation pick up location
      * @return Nearest available cab, if found else 404
      */
-    @POST @Path ("/book/{userId}") @ApiOperation (value = "Books a Cab", notes = "Books a cab and returns details of the nearest cab", response = AssignedCabDetails.class) @Produces (MediaType.APPLICATION_JSON) public Response bookCab(
-        @ApiParam (value = "Cab Color") @DefaultValue (value = "") @QueryParam (value = "color") final String cabColor,
+    @POST @Path ("/book/") @ApiOperation (value = "Books a Cab", notes = "Books a cab and returns details of the nearest cab", response = AssignedCabDetails.class) @Produces (MediaType.APPLICATION_JSON) public Response bookCab(
+        @ApiParam (value = "Pink Color") @DefaultValue (value = "false") @QueryParam (value = "pinkColor") final boolean getPinkCab,
         @ApiParam (value = "Location", required = true) final Location pickUpLocation )
     {
-        LOG.info( "Got request to book a cab for {} location and {} color", pickUpLocation, cabColor );
+        LOG.info( "Got request to book a cab for {} location of Pink color : {} ", pickUpLocation, getPinkCab );
         AssignedCabDetails assignedCabDetails = null;
+        String cabColor = "";
+        if ( getPinkCab ) {
+            cabColor = "pink";
+        }
         try {
             assignedCabDetails = UserService.bookCab( pickUpLocation, cabColor );
         } catch ( FuberException e ) {

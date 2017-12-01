@@ -40,12 +40,13 @@ public class CabService
 
     /**
      * Returns list of cabs
+     * availableCabsOnly returns only available cabs is field is set to true else return all cabs
      * @return list of cabs
      */
-    public static List<Cab> getCabs()
+    public static List<Cab> getCabs( boolean availabilityStatus )
     {
         LOG.info( "Fetching all cabs" );
-        return cabsDAO.getCabs();
+        return cabsDAO.getCabs( availabilityStatus );
     }
 
 
