@@ -28,7 +28,7 @@ import javax.ws.rs.core.Response;
      * @return list of cabs
      */
     @GET @Path ("/") @ApiOperation (value = "Returns all cabs", notes = "Returns all cabs", responseContainer = "List", response = Cab.class) @Produces (MediaType.APPLICATION_JSON) public Response getCabs(
-        @ApiParam (value = "Only available Cabs") @DefaultValue (value = "availableCabsOnly") @QueryParam (value = "availableCabsOnly") final boolean availableCabsOnly )
+        @ApiParam (value = "Only available Cabs") @DefaultValue (value = "true") @QueryParam (value = "availableCabsOnly") final boolean availableCabsOnly )
     {
         LOG.info( "Got request to fetch all cabs" );
         return Response.ok().entity( CabService.getCabs( availableCabsOnly ) ).build();
