@@ -21,33 +21,34 @@
 
 ## Compile and run
 To compile and run the application:
-	### Build the application using the following command
-	```
-	mvn clean install -DskipTests
-	```
 
-	### To run the tests:
-	```
-	mvn test
-	```
+Build the application using the following command
+```
+mvn clean install -DskipTests
+```
 
-	### To start the app:
-	```
-	java -jar target/fuber-app-1.0-SNAPSHOT.jar 
-	```
+To run the tests:
+```
+mvn test
+```
 
-	### The swagger UI will be available at:
-	```
-	http://localhost:8507/fuber/docs/
-	```
+To start the app:
+```
+java -jar target/fuber-app-1.0-SNAPSHOT.jar 
+```
+
+The swagger UI will be available at:
+```
+http://localhost:8507/fuber/docs/
+```
 
 ## To Restore the database
-The sample data is provided in the resources and shell script is also provided to restore the database.
+The sample data is provided in the resources folder and shell script is also provided to restore the database.
 
-	### To restore the database:
-	```
-	sh restoreDatabase.sh
-	```
+To restore the database:
+```
+sh restoreDatabase.sh
+```
 
 
 
