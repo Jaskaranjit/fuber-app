@@ -91,7 +91,7 @@ public class Utils
             ( locationOne.getLatitude() - locationTwo.getLatitude() ) * ( locationOne.getLatitude() - locationTwo
                 .getLatitude() ) + ( locationOne.getLongitude() - locationTwo.getLongitude() ) * ( locationOne.getLongitude()
                 - locationTwo.getLongitude() ) ) );
-        return distance;
+        return Math.round( distance * 100.0 ) / 100.0;
     }
 
 
@@ -103,7 +103,7 @@ public class Utils
     public static double calculateTime( double distance )
     {
         double timeInHour = distance / 50;
-        return timeInHour * 60;
+        return Math.round( ( timeInHour * 60 ) * 100.0 ) / 100.0;
     }
 
 
